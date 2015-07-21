@@ -7,11 +7,12 @@ export default class Counter extends Component {
     retrieve: PropTypes.func.isRequired,
     ship: PropTypes.func.isRequired,
     repair: PropTypes.string.isRequired,
-    load: PropTypes.string.isRequired
+    load: PropTypes.string.isRequired,
+    doSomethingAsync: PropTypes.string.isRequired
   };
 
   componentDidMount() {
-    this.props.load();
+    this.props.doSomethingAsync();
     console.log('lala');
   }
 
