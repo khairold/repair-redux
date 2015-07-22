@@ -25,7 +25,7 @@ export default function repair(state = initialState, action) {
     case SOMETHING_STARTED:
       return {...state, load: "started"};
     case SOMETHING_COMPLETED:
-      return {...state, load: "completed"};
+      return {...state, data: action.result, load: "completed"};
     case SOMETHING_FAILED:
       return {...state, load: "failed"};
     default:

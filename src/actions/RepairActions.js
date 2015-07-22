@@ -49,14 +49,26 @@ function requestSomething() {
   return new Promise(function(resolve, reject) {
     // do a thing, possibly async, then…
 
-    myRootRef.set({ first: 'Fred', last: 'Flintstone' }, function(error) {
-      if (error) {
-        console.log('Synchronization failed');
-        reject(Error("It broke"));
-      } else {
-        console.log('Synchronization succeeded');
-        resolve("Stuff worked!");
-      }
+    // myRootRef.set({ first: 'Fred', last: 'Flintstone' }, function(error) {
+    //   if (error) {
+    //     console.log('Synchronization failed');
+    //     reject(Error("It broke"));
+    //   } else {
+    //     console.log('Synchronization succeeded');
+    //     resolve("Stuff worked!");
+    //   }
+    // });
+
+    myRootRef.child('R00001').once('value', function (dataSnapshot) {
+      // code to handle new value
+      console.log('Synchronization succeeded');
+      console.log("data: " + dataSnapshot.val());
+        resolve(dataSnapshot.val());
+    }, function (err) {
+      // code to handle read error
+      console.log('Synchronization failed');
+      console.log("The read failed: " + err.code);
+      reject(Error("It broke"));
     });
 
     // setTimeout(function() {

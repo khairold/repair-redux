@@ -6,9 +6,9 @@ export default class Counter extends Component {
     send: PropTypes.func.isRequired,
     retrieve: PropTypes.func.isRequired,
     ship: PropTypes.func.isRequired,
-    repair: PropTypes.string.isRequired,
-    load: PropTypes.string.isRequired,
-    doSomethingAsync: PropTypes.string.isRequired
+    repair: PropTypes.object.isRequired,
+    load: PropTypes.func.isRequired,
+    doSomethingAsync: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -21,6 +21,10 @@ export default class Counter extends Component {
     return (
       <p>
         Repair state: {repair}
+
+        <p>
+          Data: {repair.data}
+        </p>
 
         <button onClick={receive}>receive</button>
         <button onClick={send}>send</button>
